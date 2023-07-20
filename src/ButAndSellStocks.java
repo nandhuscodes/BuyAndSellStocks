@@ -14,18 +14,12 @@ public class ButAndSellStocks {
     }
 
     static int countMax(int[] array) {
-        int max = Integer.MIN_VALUE;
-        for(int i = 0; i < array.length; i++){
-            if(array[i]>max){
-                max = array[i];
+        int maxProfit = 0;
+        for(int i = 0; i < array.length-1; i++){
+            if(array[i] < array[i+1]){
+                maxProfit = ((array[i+1] - array[i])> maxProfit)?(array[i+1]-array[i]):maxProfit;
             }
         }
-        int count = 0;
-        for(int i = 0; i < array.length; i++){
-            if(array[i]==max){
-                count++;
-            }
-        }
-        return array.length - count;
+        return maxProfit;
     }
 }
